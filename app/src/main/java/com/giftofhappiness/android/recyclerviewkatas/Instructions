@@ -1,0 +1,183 @@
+Kata_one Instructions
+
+add these implementations to build.gradle(module):
+
+    // Card View
+    def cardview_version = "1.0.0"
+    implementation "androidx.cardview:cardview:$cardview_version"
+
+    // Recyclerview
+    def recyclerview_version = "1.0.0"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
+    //glide
+    def glide_version = "4.8.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+
+Create a Data Class called BlogPost
+
+Create fields for title, body, image, and username all type String.
+
+
+Add this code:
+
+class DataSource {
+
+    class DataSource{
+
+        companion object{
+
+            fun createDataSet(): ArrayList<BlogPost>{
+                val list = ArrayList<BlogPost>()
+                list.add(
+                    BlogPost(
+                        "Congratulations!",
+                        "You made it to the end of the course!\r\n\r\nNext we'll be building the REST API!",
+                        "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
+                        "Sally"
+                    )
+                )
+                list.add(
+                    BlogPost(
+                        "Time to Build a Kotlin App!",
+                        "The REST API course is complete. You can find the videos here: https://codingwithmitch.com/courses/build-a-rest-api/.",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/time_to_build_a_kotlin_app.png",
+                        "mitch"
+                    )
+                )
+
+                list.add(
+                    BlogPost(
+                        "Interviewing a Web Developer and YouTuber",
+                        "Justin has been producing online courses for YouTube, Udemy, and his website CodingForEntrepreneurs.com for over 5 years.",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/coding_for_entrepreneurs.png",
+                        "John"
+                    )
+                )
+                list.add(
+                    BlogPost(
+                        "Freelance Android Developer (Vasiliy Zukanov)",
+                        "Vasiliy has been a freelance android developer for several years. He also has some of the best android development courses I've had the pleasure of taking on Udemy.com.",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/freelance_android_dev_vasiliy_zukanov.png",
+                        "Steven"
+                    )
+                )
+                list.add(
+                    BlogPost(
+                        "Freelance Android Developer, Donn Felker",
+                        "Freelancing as an Android developer with Donn Felker.\\r\\n\\r\\nDonn is also:\\r\\n\\r\\n1) Founder of caster.io\\r\\n\\r\\n2) Co-host of the fragmented podcast (fragmentedpodcast.com).",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/freelance_android_dev_donn_felker.png",
+                        "Richelle"
+                    )
+                )
+                list.add(
+                    BlogPost(
+                        "Work Life Balance for Software Developers",
+                        "What kind of hobbies do software developers have? It sounds like many software developers don't have a lot of hobbies and choose to focus on work. Is that a good idea?",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/work_life_balance.png",
+                        "Jessica"
+                    )
+                )
+                list.add(
+                    BlogPost(
+                        "Full Stack Web Developer - Nicholas Olsen",
+                        "In this podcast I interviewed the Fullsnack Developer (AKA Nicholas Olsen).\\r\\n\\r\\nNicholas is many things. What I mean by that is, he's good at many things.\\r\\n\\r\\n1. He’s an entrepreneur\\r\\n\\r\\n2. Web developer\\r\\n\\r\\n3. Artist\\r\\n\\r\\n4. Graphic designer\\r\\n\\r\\n5. Musician (drums)\\r\\n\\r\\n6. Professional BodyBuilder.",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/fullsnack_developer.png",
+                        "Guy"
+                    )
+                )
+                list.add(
+                    BlogPost(
+                        "Javascript Expert - Wes Bos",
+                        "Interviewing a web developer, javascript expert, entrepreneur, freelancer, podcaster, and much more.",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/javascript_expert_wes_bos.png",
+                        "Ruby"
+                    )
+                )
+                list.add(
+                    BlogPost(
+                        "Senior Android Engineer - Kaushik Gopal",
+                        "Kaushik Gopal is a Senior Android Engineer working in Silicon Valley.\r\n\r\nHe works as a Senior Staff engineer at Instacart.\r\n\r\nInstacart: https://www.instacart.com/",
+                        "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/senior_android_engineer_kaushik_gopal.png",
+                        "mitch"
+                    )
+                )
+                return list
+            }
+        }
+    }
+   }
+
+
+create a layout for the recyclerview views and add the following code to the xml file.
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="2dp"
+        app:cardPreventCornerOverlap="false"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/blog_image"
+                android:padding="0dp"
+                android:layout_margin="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+        />
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/blog_image"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:id="@+id/container1"
+        >
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blog_title"
+                    android:text="The Title of a Blog"
+                    android:textColor="#000"
+                    android:textSize="19sp"
+            />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blog_author"
+                    android:text="Mitch Tabian"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+            />
+
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
